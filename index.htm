@@ -1,0 +1,125 @@
+<html>
+<head>
+	<title>Toast Plugin Test</title>
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+	<script src="jquery.toast.js"></script>
+	<script>
+		$(document).ready(function() {
+			$.toast('show', {
+				text: "Yes",
+				sticky: true
+			});
+			$.toast('show', {
+				stayTime: 5000,
+				text: "Toasts Woop"
+			});
+			$.toast('show', {
+				stayTime: 5000,
+				text: "Toasts Woop"
+			});
+
+			$('#run').click(function(e) {
+				e.preventDefault();
+				var msg = $('#msg').val();
+				var type = $('#type').val();
+				var length = $('#length').val();
+				var sticky = $('#sticky').val() === "true" ? true : false;
+				$.toast('show', {
+					stayTime: length,
+					type: type,
+					text: msg,
+					sticky: sticky
+				});
+			});
+		});
+	</script>
+	<style>
+		body {
+			font-family: Arial, "MS Trebuchet", sans-serif;
+		}
+		.toastContainer {
+			width: 250px;
+			min-height: 75px;
+			height: auto;
+			position: absolute;
+		}
+		.toastContainer .the-toast {
+			width: 230px;
+			min-height: 40px;
+			height: auto;
+			position: relative;
+			background-color: rgba(0,0,0,0.7);
+			border-radius: 10px;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+		.toastContainer .the-toast .icon,
+		.toastContainer .the-toast .message,
+		.toastContainer .the-toast .close {
+			float: left;
+			display: inline-block;
+			color: #DDD;
+		}
+		.toastContainer .the-toast .icon {
+			width: 32px;
+			height: 32px;
+			margin: 4px 10px 5px 0;
+		}
+		.toastContainer .the-toast .icon.success {background: url('success.png') top left no-repeat}
+		.toastContainer .the-toast .icon.notice {background: url('notice.png') top left no-repeat}
+		.toastContainer .the-toast .icon.error {background: url('error.png') top left no-repeat}
+		.toastContainer .the-toast .icon.warning {background: url('warning.png') top left no-repeat}
+		.toastContainer .the-toast .message {
+			width: 150px;
+			margin: 10px;
+		}
+		.toastContainer .the-toast .close {
+			width: 12px;
+			font-size: 20px;
+			margin: 10px 0;
+			cursor: pointer;
+		}
+		.toastContainer.top-left {left: 20px; top: 20px;}
+		.toastContainer.top-center {left: 50%; margin-left: -125px; top: 20px;}
+		.toastContainer.top-right {right: 20px; top: 20px;}
+		.toastContainer.middle-left {left: 20px; top: 20px;}
+		.toastContainer.middle-center {left: 20px; top: 20px;}
+		.toastContainer.middle-right {left: 20px; top: 20px;}
+
+		.clearfix:after {content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+		.clearfix {display: inline-block;}
+		/* Hides from IE-mac \*/
+		* html .clearfix {height: 1%;}
+		.clearfix {display: block;}
+		/* End hide from IE-mac */
+	</style>
+</head>
+<body>
+	<label for="msg">Message</label>
+	<input type="text" id="msg" placeholder="Toast me" value="toasty is really toasty and really long toasty is really toasty and really long toasty is really toasty and really long v" />
+	<label for="type">Type</label>
+	<select id="type">
+		<option value="success">Success</option>
+		<option value="notice">Notice</option>
+		<option value="error">Error</option>
+		<option value="warning">Warning</option>
+	</select>
+	<label for="length">length</label>
+	<select id="length">
+		<option value="1000">1000</option>
+		<option value="2000">2000</option>
+		<option value="3000">3000</option>
+		<option value="4000">4000</option>
+		<option value="5000">5000</option>
+		<option value="6000">6000</option>
+		<option value="7000">7000</option>
+		<option value="8000">8000</option>
+	</select>
+	<label for="sticky">Sticky</label>
+	<select id="sticky">
+		<option value="true">Yes</option>
+		<option value="false">No</option>
+	</select>
+	<button id="run">Run!</button>
+</body>
+</html>
